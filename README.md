@@ -24,7 +24,7 @@ Installation de ArchLinux
 
     lsblk -f
 
-###### On les supprime
+###### On les formate
 
     mkfs.ext4 /dev/sdb1
     mkfs.ext4 /dev/sdb2
