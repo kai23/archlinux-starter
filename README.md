@@ -140,7 +140,7 @@ EndSection
     vim .xinitrc
 
 ###### Installation de Yaourt
-### Ajout du repo archlinuxfr
+######## Ajout du repo archlinuxfr
     vim /etc/pacman.conf 
 ```
 [archlinuxfr]
