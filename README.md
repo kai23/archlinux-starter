@@ -71,7 +71,7 @@ Installation de ArchLinux
 
 ###### Installation de grub
 
-    pacstrap /mnt/ grub-bios
+    pacstrap /mnt/ grub-bios os-prober
 
 ###### Création du fstab
 
