@@ -120,28 +120,36 @@ Installation de ArchLinux
 ###### Ajout de l'interface graphique
     sudo pacman -Syu xorg-server xorg-xinit xorg-xmessage xorg-utils xf86-video-intel xf86-input-synaptics
 
+###### Ajout du Français dans X.Org
+    sudo vim /etc/X11/xorg.conf.d/10-keyboard-layout.conf
+
+```
+Section "InputClass"
+	Identifier "Keyboard Layout"
+	MatchIsKeyboard "yes"
+	Option "XkbLayout" "fr"
+	Option "XkbVariant" "latin9"
+EndSection
+```
+    
 ###### Ajout de quelques paquets en plus
     sudo pacman -S cinnamon cinnamon-screensaver gucharmap libgnomekbd nemo gnome-terminal gedit gnome-control-center fuse-exfat exfat-utils eog zsh gnome-keyring slim ntfs-3g chromium evince axel gnome-tweak-tool xdg-user-dirs
 
 ###### On va récupérer nos confs (voir annexes pour les confs)
-    lsblk -f
-    sudo mount /dev/sda3 /mnt/
-    sudo cp /mnt/10-keyboard-layout.conf /etc/X11/xorg.conf.d/
-    sudo cp /mnt/50-synaptics.conf /etc/X11/xorg.conf.d/
     cp /etc/skel/.xinitrc .
-    nano .xinitrc
+    vim .xinitrc
 
 ###### Installation de Yaourt
-    curl -O https://aur.archlinux.org/packages/pa/package-query/package-query.tar.gz
-    tar zxvf package-query.tar.gz
-    cd package-query
-    makepkg -si
-    cd ..
-    curl -O https://aur.archlinux.org/packages/ya/yaourt/yaourt.tar.gz
-    tar zxvf yaourt.tar.gz
-    cd yaourt
-    makepkg -si
-    cd ..
+### Ajout du repo archlinuxfr
+    vim /etc/pacman.conf 
+```
+[archlinuxfr]
+SigLevel = Never
+Server = http://repo.archlinux.fr/$arch
+```
+    sudo pacman -Syuu
+    sudo pacman -S yaourt
+
 
 ###### ajout d'un theme
     yaourt faenza 
